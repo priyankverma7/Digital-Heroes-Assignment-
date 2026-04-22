@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:3001/api"
+  baseURL: "https://digital-heroes-assignment-l4ad.onrender.com/api"
 });
 
 // Attach token automatically

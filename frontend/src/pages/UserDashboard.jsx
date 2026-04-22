@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 import Navbar from "../components/Navbar";
 import { useAuth } from "../context/AuthContext";
@@ -35,7 +34,6 @@ const UserDashboard = ({ user }) => {
   const [loading, setLoading]         = useState(true);
   const { logout, updateUser } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const loadData = async () => {
     try {
@@ -67,11 +65,7 @@ const UserDashboard = ({ user }) => {
 
   useEffect(() => {
     loadData();
-    // Stripe redirects back with ?subscribed=true — show toast and clean URL
-    if (location.search.includes("subscribed=true")) {
-      toast.success("Subscription activated! Welcome aboard 🎉");
-      window.history.replaceState({}, "", "/dashboard");
-    }
+
   }, []);
 
   const handleLogout = () => { logout(); navigate("/login"); };

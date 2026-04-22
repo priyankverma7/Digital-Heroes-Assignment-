@@ -35,7 +35,7 @@ export const createCheckoutSession = async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.CLIENT_URL}/dashboard?subscribed=true`,
+      success_url: `${process.env.CLIENT_URL}/subscription?subscribed=true`,
       cancel_url: `${process.env.CLIENT_URL}/subscription`,
     });
 
@@ -66,4 +66,3 @@ export const cancelSubscription = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
